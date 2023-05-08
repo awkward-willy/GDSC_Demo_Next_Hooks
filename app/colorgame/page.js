@@ -109,10 +109,16 @@ export default function ColorGame() {
   return (
     <div>
       <Navbar />
-      <Title content="Color Game" />
-      <p>Your Score: {score}</p>
-      <p>Difficulty: {difficulty}</p>
-      <div className="flex flex-wrap">
+      <div className="flex flex-col justify-center items-center">
+        <div className="h-[20vh] flex flex-wrap items-center">
+          <Title content="Color Game" />
+          <div>
+            <p>Your Score: {score}</p>
+            <p>Difficulty: {difficulty}</p>
+          </div>
+        </div>
+        
+      <div className="h-[30vh] flex flex-wrap">
         {blocks.map((color, index) => (
           <button
             style={{
@@ -132,6 +138,8 @@ export default function ColorGame() {
           ></button>
         ))}
       </div>
+      </div>
+      
     </div>
   );
 }
