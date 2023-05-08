@@ -15,8 +15,11 @@ const Navbar = () => {
       <Link href="/experience" className="m-4">
         Experience
       </Link>
-      <Link href="/button" className="m-4">
-        Button
+      <Link href="/colorgame" className="m-4">
+        Color Game
+      </Link>
+      <Link href="/todo" className="m-4">
+        Todo List
       </Link>
     </div>
   );

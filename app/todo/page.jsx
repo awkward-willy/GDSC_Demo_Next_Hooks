@@ -1,26 +1,15 @@
 "use client";
-import { useState, useEffect } from "react";
-
+import Navbar from "../components/Navbar";
+import Title from "../components/Title";
+import { useState } from "react";
 function TodoList() {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState("");
-
-  useEffect(() => {
-    const storedTodos = localStorage.getItem("todos");
-    if (storedTodos) {
-      setTodos(JSON.parse(storedTodos));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
 
   const handleAddTodo = () => {
     if (inputValue.trim() === "") {
       return;
     }
-
     setTodos([...todos, inputValue.trim()]);
     setInputValue("");
   };
@@ -32,16 +21,9 @@ function TodoList() {
   };
 
   return (
-    <div>
-      <h1>Todo List</h1>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>
-            {todo}
-            <button onClick={() => handleDeleteTodo(index)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+    <>
+      <Navbar />
+      <Title content="Todo List" />
       <div>
         <input
           type="text"
@@ -50,7 +32,15 @@ function TodoList() {
         />
         <button onClick={handleAddTodo}>Add</button>
       </div>
-    </div>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>
+            {todo}
+            <button onClick={() => handleDeleteTodo(index)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
 
